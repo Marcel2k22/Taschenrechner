@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Taschenrechner</title>
+    </head>
+    <body>
+
+        <input type="number" id="Zahl1" placeholder="Zahl 1">
+
+            <select id="Auswahl">
+                <option>+</option>
+                <option>-</option>
+                <option>*</option>
+                <option>/</option>
+            </select>
+
+        <input type="number" id="Zahl2" placeholder="Zahl 2">
+        <button onclick="Rechner()">Berechnen</button>
+        <button onclick="löschen()">Löschen</button>
+        <div id="Ergebnis">Ergebnis: </div>
+
+    </body>
+</html>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+input {
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+select {
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: green;
+}
+
+#Ergebnis {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+</style>
+
+<script>
+  function Rechner() {
+    var Zahl1 = parseFloat(document.getElementById('Zahl1').value) || 0;
+    var Zahl2 = parseFloat(document.getElementById('Zahl2').value) || 0;
+    var Auswahl = document.getElementById('Auswahl').value;
+    var ErgebnisElement = document.getElementById('Ergebnis');
+    var Ergebnis;
+
+    switch (Auswahl) {
+      case '+': Ergebnis = Zahl1 + Zahl2; break;
+      case '-': Ergebnis = Zahl1 - Zahl2; break;
+      case '*': Ergebnis = Zahl1 * Zahl2; break;
+      case '/': Ergebnis = Zahl2 !== 0 ? Zahl1 / Zahl2 : 'Ungültig'; break;
+      default: Ergebnis = 'Ungültig';
+    }
+
+    ErgebnisElement.textContent = 'Ergebnis: ' + Ergebnis;
+  }
+
+  function löschen() {
+    document.getElementById('Zahl1').value = '';
+    document.getElementById('Zahl2').value = '';
+    document.getElementById('Auswahl').selectedIndex = 0;
+    document.getElementById('Ergebnis').textContent = 'Ergebnis: ';
+  }
+</script>
+
